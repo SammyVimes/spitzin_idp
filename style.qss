@@ -1,0 +1,15 @@
+ClickableLabel[pressed="true"] {
+    background-color: #00e600;
+    color: white;
+}
+
+ClickableLabel {
+    font-size: 20px;
+    background-color: #cccccc;
+    border: 1px solid #bbbbbb;
+    color: black;
+}
+
+QWidget#centralWidget {
+    background-color: white;
+}

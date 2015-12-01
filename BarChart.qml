@@ -5,12 +5,13 @@ import "."
 import "QChart.js"        as Charts
 
 QChart {
-      id: chart_doughnut;
+      id: chart_bar;
       width: chart_width;
       height: chart_height;
       chartAnimated: true;
-      chartAnimationEasing: Easing.OutElastic;
+      chartAnimationEasing: Easing.OutBounce;
       chartAnimationDuration: 2000;
-      chartData: ChartsData.ChartDoughnutDataGen();
-      chartType: Charts.ChartType.DOUGHNUT;
+      chartData: ChartsData.ChartBarData;
+      chartType: Charts.ChartType.BAR;
 }
+
