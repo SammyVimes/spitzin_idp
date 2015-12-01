@@ -12,12 +12,15 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    clickablelabel.cpp
+    clickablelabel.cpp \
+    stateventitemwidget.cpp
 
 HEADERS  += mainwindow.h \
-    clickablelabel.h
+    clickablelabel.h \
+    stateventitemwidget.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    stateventitemwidget.ui
 
 OTHER_FILES += \
     ChartForm.ui.qml

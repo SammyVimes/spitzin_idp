@@ -10,6 +10,12 @@ ClickableLabel {
     color: black;
 }
 
+
+StatEventItemWidget {
+    background-color: red;
+}
+
 QWidget#centralWidget {
     background-color: white;
 }
+

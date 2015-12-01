@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
+#include <QCheckBox>
+#include "stateventitemwidget.h"
 
 namespace Ui {
 class MainWindow;

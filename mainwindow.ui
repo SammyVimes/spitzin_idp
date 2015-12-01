@@ -54,16 +54,6 @@
      <string>+79218711725</string>
     </property>
    </widget>
-   <widget class="QListView" name="listView">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>100</y>
-      <width>241</width>
-      <height>421</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QQuickWidget" name="quickWidget_4">
     <property name="geometry">
      <rect>
@@ -96,6 +86,16 @@
     </property>
     <property name="text">
      <string>+79215988738</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="statEvents">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>256</width>
+      <height>411</height>
+     </rect>
     </property>
    </widget>
   </widget>
