@@ -3,6 +3,11 @@ ClickableLabel[pressed="true"] {
     color: white;
 }
 
+ClickableLabel:hover {
+    background-color: #00A35f;
+    color: white;
+}
+
 ClickableLabel {
     font-size: 20px;
     background-color: #F2F2F2;
@@ -13,6 +18,10 @@ ClickableLabel {
 
 QListWidget, QScrollArea {
     border: 1px solid #E9EBED;
+}
+
+QLabel[hovered="true"] {
+    color: white;
 }
 
 StatEventItemWidget:hover {
