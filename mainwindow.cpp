@@ -1,6 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+void MainWindow::mousePressEvent(QMouseEvent* e)
+{
+    clickPos = e->pos();
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent* e)
+{
+    //move( e->globalPos() - clickPos );
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)

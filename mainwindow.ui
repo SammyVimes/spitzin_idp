@@ -35,6 +35,18 @@
       <height>51</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>151</width>
+      <height>51</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>151</width>
+      <height>51</height>
+     </size>
+    </property>
     <property name="styleSheet">
      <string notr="true"/>
     </property>
@@ -50,6 +62,18 @@
       <width>151</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>151</width>
+      <height>51</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>151</width>
+      <height>51</height>
+     </size>
     </property>
     <property name="styleSheet">
      <string notr="true"/>
@@ -71,9 +95,9 @@
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>280</x>
       <y>100</y>
-      <width>561</width>
+      <width>581</width>
       <height>431</height>
      </rect>
     </property>
@@ -85,7 +109,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>542</width>
+       <width>562</width>
        <height>624</height>
       </rect>
      </property>
@@ -132,6 +156,19 @@
      <zorder>quickWidget_4</zorder>
      <zorder>quickWidget_4</zorder>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>794</x>
+      <y>0</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выход</string>
+    </property>
    </widget>
   </widget>
  </widget>

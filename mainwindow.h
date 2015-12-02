@@ -13,7 +13,9 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+protected:
+    void mousePressEvent( QMouseEvent *);
+    void mouseMoveEvent( QMouseEvent *);
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -24,6 +26,7 @@ private slots:
     void on_child2Btn_clicked();
 
 private:
+    QPoint clickPos;
     Ui::MainWindow *ui;
 };
 

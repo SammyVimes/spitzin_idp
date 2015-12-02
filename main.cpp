@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QString styleSheet = QLatin1String(file.readAll());
 
     qApp->setStyleSheet(styleSheet);
-
+    //w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::CustomizeWindowHint);
     w.show();
 
 
