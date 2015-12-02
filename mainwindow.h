@@ -33,8 +33,11 @@ private slots:
 
 private:
     QFutureWatcher< QList<StatEvent> >* watcher;
+    QPropertyAnimation *refreshAnimation;
 
     void loadStats(QString msisdn);
+    void startRefreshAnim();
+    void stopRefreshAnim();
     QPoint clickPos;
     Ui::MainWindow *ui;
 };

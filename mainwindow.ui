@@ -163,11 +163,21 @@
       <x>794</x>
       <y>0</y>
       <width>91</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>Выход</string>
+    </property>
+   </widget>
+   <widget class="RotationLabel" name="refreshIcon" native="true">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>0</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -186,6 +196,12 @@
    <slots>
     <signal>clicked()</signal>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>RotationLabel</class>
+   <extends>QWidget</extends>
+   <header>rotationlabel.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

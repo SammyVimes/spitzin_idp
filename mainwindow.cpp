@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->refreshIcon->setPath(QString::fromUtf8(":/img/icon_refresh.png"));
 }
 
 MainWindow::~MainWindow()
@@ -37,22 +38,34 @@ void MainWindow::on_child2Btn_clicked()
     this->ui->child1Btn->setActive(false);
 }
 
+//вместо extern сделаем просто функцию тут
 QList<StatEvent> getData(DataProvider& provider, QString msisdn) {
     return provider.getEventsForMsisdn(msisdn);
 }
 
 void MainWindow::loadStats(QString msisdn)
 {
+    startRefreshAnim();
     DataProvider* dataSource = new DataProvider;
-
     watcher = new QFutureWatcher< QList<StatEvent> >;
     connect(watcher, SIGNAL(finished()), this, SLOT(onDataLoaded()));
     QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, *dataSource, msisdn);
     watcher->setFuture(mahBoi);
 }
 
+void MainWindow::startRefreshAnim()
+{
+    ui->refreshIcon->start();
+}
+
+void MainWindow::stopRefreshAnim()
+{
+    ui->refreshIcon->stop();
+}
+
 void MainWindow::onDataLoaded()
 {
+    stopRefreshAnim();
     QList<StatEvent> events = watcher->future().result();
 
     QListWidget* statEvents = ui->statEvents;

@@ -4,10 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets quickwidgets qml quick declarative
+QT       += core gui widgets designer quickwidgets qml quick declarative
 
 TARGET = pcmdp
 TEMPLATE = app
+
 
 
 SOURCES += main.cpp\
@@ -20,7 +21,8 @@ HEADERS  += mainwindow.h \
     clickablelabel.h \
     stateventitemwidget.h \
     dataprovider.h \
-    statevent.h
+    statevent.h \
+    rotationlabel.h
 
 FORMS    += mainwindow.ui \
     stateventitemwidget.ui
@@ -40,3 +42,4 @@ DISTFILES += \
 
 RESOURCES += \
     stylesheet.qrc
+

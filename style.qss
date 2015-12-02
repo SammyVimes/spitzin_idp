@@ -42,6 +42,10 @@ StatEventItemWidget QLabel {
     background-color: #F43C31;
 }
 
+RotationLabel * {
+    border: none;
+}
+
 #exitButton {
     background-color: #E43C31;
     border: none;

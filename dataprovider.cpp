@@ -22,7 +22,10 @@ QList<StatEvent> DataProvider::getEventsForMsisdn(QString msisdn)
         StatEvent e(QString("Hello, Niko"), QDateTime(QDate(2007, 10, 25), QTime(23, 38)));
         lst.append(e);
     }
-    sleep(2000);
+    int min = 1;
+    int max = 3;
+    int output = min + (rand() % (int)(max - min + 1));
+    sleep(1000 + (output * 1000));
     return lst;
 }
 
