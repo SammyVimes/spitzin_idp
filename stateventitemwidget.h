@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QStyle>
 #include <QPainter>
+#include <QDateTime>
 #include <QMouseEvent>
 
 namespace Ui {
@@ -22,6 +23,7 @@ protected:
 public:
     void paintEvent(QPaintEvent *);
     explicit StatEventItemWidget(QWidget *parent = 0);
+    StatEventItemWidget(QString text, QDateTime date);
     ~StatEventItemWidget();
 
 private:

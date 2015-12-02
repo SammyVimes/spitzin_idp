@@ -45,7 +45,6 @@ StatEventItemWidget QLabel {
 #exitButton {
     background-color: #E43C31;
     border: none;
-    shadow: none;
     color: white;
     font-size: 18px;
 }
@@ -57,7 +56,6 @@ StatEventItemWidget {
     margin-left: 2px;
     background-color: #F2F2F2;
     border: 1px solid #D4D4D4;
-    transition: all 1s ease;
 }
 
 QWidget#centralWidget {

@@ -38,6 +38,24 @@ void StatEventItemWidget::paintEvent(QPaintEvent *)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
 
+StatEventItemWidget::StatEventItemWidget(QString text, QDateTime date):QWidget(0),
+    ui(new Ui::StatEventItemWidget)
+{
+    ui->setupUi(this);
+    this->setMouseTracking(true);
+    rekt = false;
+
+    QString day = QString::number(date.date().day());
+    QString month = QString::number(date.date().month());
+    QString year = QString::number(date.date().year());
+
+    QString hour = QString::number(date.time().hour());
+    QString minute = QString::number(date.time().minute());
+
+    ui->label->setText(hour + ":" + minute + " " + day + "." + month + "." + year);
+    ui->label_2->setText(text);
+}
+
 StatEventItemWidget::StatEventItemWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::StatEventItemWidget)
@@ -45,11 +63,6 @@ StatEventItemWidget::StatEventItemWidget(QWidget *parent) :
     ui->setupUi(this);
     this->setMouseTracking(true);
     rekt = false;
-    QString array[4] = {"ВКонтакте от Гришки", "Telegram", "YouTube", "DachaMonitor"};
-    int min = 0;
-    int max = 3;
-    int output = min + (rand() % (int)(max - min + 1));
-    ui->label_2->setText("Запущено приложение " + array[output]);
 }
 
 StatEventItemWidget::~StatEventItemWidget()

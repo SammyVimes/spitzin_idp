@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QCheckBox>
+#include <QtConcurrent/QtConcurrent>
+#include <QFuture>
+#include <QFutureWatcher>
+#include "dataprovider.h"
 #include "stateventitemwidget.h"
 
 namespace Ui {
@@ -25,7 +29,12 @@ private slots:
 
     void on_child2Btn_clicked();
 
+    void onDataLoaded();
+
 private:
+    QFutureWatcher< QList<StatEvent> >* watcher;
+
+    void loadStats(QString msisdn);
     QPoint clickPos;
     Ui::MainWindow *ui;
 };

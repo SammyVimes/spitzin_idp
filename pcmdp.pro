@@ -13,11 +13,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     clickablelabel.cpp \
-    stateventitemwidget.cpp
+    stateventitemwidget.cpp \
+    dataprovider.cpp
 
 HEADERS  += mainwindow.h \
     clickablelabel.h \
-    stateventitemwidget.h
+    stateventitemwidget.h \
+    dataprovider.h \
+    statevent.h
 
 FORMS    += mainwindow.ui \
     stateventitemwidget.ui
