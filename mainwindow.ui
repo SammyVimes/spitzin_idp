@@ -26,24 +26,6 @@
      <height>540</height>
     </size>
    </property>
-   <widget class="QQuickWidget" name="quickWidget">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>100</y>
-      <width>511</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="resizeMode">
-     <enum>QQuickWidget::SizeRootObjectToView</enum>
-    </property>
-    <property name="source">
-     <url>
-      <string>file:///E:/development/pcmdp/pcmdp/BarChart.qml</string>
-     </url>
-    </property>
-   </widget>
    <widget class="ClickableLabel" name="child1Btn">
     <property name="geometry">
      <rect>
@@ -58,24 +40,6 @@
     </property>
     <property name="text">
      <string>+79218711725</string>
-    </property>
-   </widget>
-   <widget class="QQuickWidget" name="quickWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>310</y>
-      <width>511</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="resizeMode">
-     <enum>QQuickWidget::SizeRootObjectToView</enum>
-    </property>
-    <property name="source">
-     <url>
-      <string>file:///E:/development/pcmdp/pcmdp/MyChart.qml</string>
-     </url>
     </property>
    </widget>
    <widget class="ClickableLabel" name="child2Btn">
@@ -103,6 +67,71 @@
       <height>431</height>
      </rect>
     </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>100</y>
+      <width>561</width>
+      <height>431</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>542</width>
+       <height>624</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QQuickWidget" name="quickWidget">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="resizeMode">
+         <enum>QQuickWidget::SizeRootObjectToView</enum>
+        </property>
+        <property name="source">
+         <url>
+          <string>file:///E:/development/pcmdp/pcmdp/BarChart.qml</string>
+         </url>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QQuickWidget" name="quickWidget_4">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>300</height>
+         </size>
+        </property>
+        <property name="resizeMode">
+         <enum>QQuickWidget::SizeRootObjectToView</enum>
+        </property>
+        <property name="source">
+         <url>
+          <string>file:///E:/development/pcmdp/pcmdp/MyChart.qml</string>
+         </url>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>quickWidget</zorder>
+     <zorder>quickWidget</zorder>
+     <zorder>quickWidget_4</zorder>
+     <zorder>quickWidget_4</zorder>
+    </widget>
    </widget>
   </widget>
  </widget>
