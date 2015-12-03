@@ -25,6 +25,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::showEvent(QShowEvent *e)
+{
+    this->ui->child1Btn->setActive(true);
+    this->ui->child2Btn->setActive(false);
+    loadStats("+79218711725");
+}
+
 void MainWindow::on_child1Btn_clicked()
 {
     this->ui->child1Btn->setActive(true);

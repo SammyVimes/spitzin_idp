@@ -18,7 +18,7 @@ QList<StatEvent> DataProvider::getEventsForMsisdn(QString msisdn)
 {
 
     QString apps[6] = {"ВКонтакте", "Telegram", "YouTube", "DachaMonitor", "MiFit", "Angry Birds"};
-    QString contacts[6] = {"Аллах", "Эдик", "Петя", "Макс", "Экскалибур", "Мама"};
+    QString contacts[6] = {"Ерохин", "Эдик", "Петя", "Макс", "Васян", "Мама"};
     QString osEvent[6] = {"Включение устройства", "Выключение устройства", "Тревога!", "Попытка отключения", "Test1", "Test2"};
     QString netEvent[6] = {"www.yandex.ru", "youtube.com", "codeforce.com", "bash.org", "wikipedia.ru", "maythe4.com"};
 

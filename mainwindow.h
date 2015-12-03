@@ -31,6 +31,8 @@ private slots:
 
     void onDataLoaded();
 
+    void showEvent(QShowEvent* e);
+
 private:
     QFutureWatcher< QList<StatEvent> >* watcher;
     QPropertyAnimation *refreshAnimation;

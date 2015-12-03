@@ -5,4 +5,11 @@
     <qresource prefix="/img">
         <file>icon_refresh.png</file>
     </qresource>
+    <qresource prefix="/qml">
+        <file>BarChart.qml</file>
+        <file>MyChart.qml</file>
+        <file>QChart.js</file>
+        <file>QChart.qml</file>
+        <file>QChartGallery.js</file>
+    </qresource>
 </RCC>

@@ -127,7 +127,7 @@
         </property>
         <property name="source">
          <url>
-          <string>file:///E:/development/pcmdp/pcmdp/BarChart.qml</string>
+          <string>qrc:/qml/BarChart.qml</string>
          </url>
         </property>
        </widget>
@@ -145,7 +145,7 @@
         </property>
         <property name="source">
          <url>
-          <string>file:///E:/development/pcmdp/pcmdp/MyChart.qml</string>
+          <string>qrc:/qml/MyChart.qml</string>
          </url>
         </property>
        </widget>
