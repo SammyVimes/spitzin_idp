@@ -33,6 +33,8 @@ private slots:
 
     void showEvent(QShowEvent* e);
 
+    void on_exitButton_clicked();
+
 private:
     QFutureWatcher< QList<StatEvent> >* watcher;
     QPropertyAnimation *refreshAnimation;

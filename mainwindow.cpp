@@ -8,7 +8,7 @@ void MainWindow::mousePressEvent(QMouseEvent* e)
 
 void MainWindow::mouseMoveEvent(QMouseEvent* e)
 {
-    //move( e->globalPos() - clickPos );
+    move( e->globalPos() - clickPos );
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -92,4 +92,9 @@ void MainWindow::onDataLoaded()
         statEvents->addItem(item);
         statEvents->setItemWidget(item, widgetItem);
     }
+}
+
+void MainWindow::on_exitButton_clicked()
+{
+    this->close();
 }

@@ -17,19 +17,19 @@
 // /////////////////////////////////////////////////////////////////
 
 var ChartLineData = {
-      labels: ["January","February","March","April","May","June","July"],
+      labels: ["Понедельник","Вторник","Среда","Четверг","Пятница","СУббота","Воскресенье"],
     datasets: [{
-               fillColor: "rgba(220,220,220,0.5)",
-             strokeColor: "rgba(220,220,220,1)",
-              pointColor: "rgba(220,220,220,1)",
+               fillColor: "rgba(220,120,120,0.5)",
+             strokeColor: "rgba(220,120,120,1)",
+              pointColor: "rgba(220,120,120,1)",
         pointStrokeColor: "#ffffff",
-                    data: [65,59,90,81,56,55,40]
+                    data: [6,5,9,8,5,5,4]
     }, {
-               fillColor: "rgba(151,187,205,0.5)",
-             strokeColor: "rgba(151,187,205,1)",
-              pointColor: "rgba(151,187,205,1)",
+               fillColor: "rgba(151,230,180,0.5)",
+             strokeColor: "rgba(151,230,180,1)",
+              pointColor: "rgba(151,230,180,1)",
         pointStrokeColor: "#ffffff",
-                    data: [28,48,40,19,96,27,100]
+                    data: [2,4,4,1,9,2,10]
     }]
 }
 
@@ -142,7 +142,7 @@ var ChartDoughnutDataGen = function () {
 // /////////////////////////////////////////////////////////////////
 
 var ChartBarData = {
-      labels: ["January","February","March","April","May","June","July"],
+      labels: ["AngyBirds","Вконтакте","MS Word","Steam","Origin","Zanzara","TotalCommander"],
     datasets: [{
           fillColor: "rgba(220,220,220,0.5)",
         strokeColor: "rgba(220,220,220,1)",

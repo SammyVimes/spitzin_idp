@@ -26,6 +26,9 @@
      <height>540</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="ClickableLabel" name="child1Btn">
     <property name="geometry">
      <rect>
@@ -110,10 +113,20 @@
        <x>0</x>
        <y>0</y>
        <width>562</width>
-       <height>624</height>
+       <height>678</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">font-size:17px;</string>
+        </property>
+        <property name="text">
+         <string>Статистика приложений</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QQuickWidget" name="quickWidget">
         <property name="minimumSize">
@@ -129,6 +142,16 @@
          <url>
           <string>qrc:/qml/BarChart.qml</string>
          </url>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">font-size:17px;</string>
+        </property>
+        <property name="text">
+         <string>Статистика входящих/исходящих за последнюю неделю</string>
         </property>
        </widget>
       </item>
@@ -155,12 +178,14 @@
      <zorder>quickWidget</zorder>
      <zorder>quickWidget_4</zorder>
      <zorder>quickWidget_4</zorder>
+     <zorder>label</zorder>
+     <zorder>label_2</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="exitButton">
     <property name="geometry">
      <rect>
-      <x>794</x>
+      <x>800</x>
       <y>0</y>
       <width>91</width>
       <height>41</height>
@@ -173,7 +198,7 @@
    <widget class="RotationLabel" name="refreshIcon" native="true">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>740</x>
       <y>0</y>
       <width>61</width>
       <height>41</height>
