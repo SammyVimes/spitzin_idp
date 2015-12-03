@@ -13,7 +13,8 @@ void MainWindow::mouseMoveEvent(QMouseEvent* e)
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    watcher(0)
 {
     ui->setupUi(this);
     ui->refreshIcon->setPath(QString::fromUtf8(":/img/icon_refresh.png"));
@@ -28,14 +29,14 @@ void MainWindow::on_child1Btn_clicked()
 {
     this->ui->child1Btn->setActive(true);
     this->ui->child2Btn->setActive(false);
-
-    loadStats("asd");
+    loadStats("+79218711725");
 }
 
 void MainWindow::on_child2Btn_clicked()
 {
     this->ui->child2Btn->setActive(true);
     this->ui->child1Btn->setActive(false);
+    loadStats("+79215988738");
 }
 
 //вместо extern сделаем просто функцию тут
@@ -45,6 +46,11 @@ QList<StatEvent> getData(DataProvider& provider, QString msisdn) {
 
 void MainWindow::loadStats(QString msisdn)
 {
+    if (watcher) {
+        QFuture< QList<StatEvent> > mahOldBoi = (QFuture< QList<StatEvent> >) watcher->future();
+        mahOldBoi.cancel();
+        watcher = 0;
+    }
     startRefreshAnim();
     DataProvider* dataSource = new DataProvider;
     watcher = new QFutureWatcher< QList<StatEvent> >;
@@ -69,7 +75,7 @@ void MainWindow::onDataLoaded()
     QList<StatEvent> events = watcher->future().result();
 
     QListWidget* statEvents = ui->statEvents;
-
+    statEvents->clear();
     for (int i = 0; i < events.size(); i++) {
         StatEvent e = events.at(i);
 
