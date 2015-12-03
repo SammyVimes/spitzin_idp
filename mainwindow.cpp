@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->refreshIcon->setPath(QString::fromUtf8(":/img/icon_refresh.png"));
+    setWindowTitle("ParentalCare");
 }
 
 MainWindow::~MainWindow()
@@ -51,11 +52,16 @@ QList<StatEvent> getData(DataProvider& provider, QString msisdn) {
     return provider.getEventsForMsisdn(msisdn);
 }
 
+QList<StatEvent> getData(DataProvider& provider, MSISDN msisdn, QDateTime dateTime) {
+    return provider.selectByDateAndMsisdn(msisdn, dateTime);
+}
+
 void MainWindow::loadStats(QString msisdn)
 {
     if (watcher) {
         QFuture< QList<StatEvent> > mahOldBoi = (QFuture< QList<StatEvent> >) watcher->future();
         mahOldBoi.cancel();
+        delete watcher;
         watcher = 0;
     }
     startRefreshAnim();
@@ -66,18 +72,24 @@ void MainWindow::loadStats(QString msisdn)
     watcher->setFuture(mahBoi);
 }
 
-void MainWindow::startRefreshAnim()
+//FIXME: duplicate
+void MainWindow::loadStatsByMsisdnAndDate(MSISDN msisdn, QDateTime dateTime)
 {
-    ui->refreshIcon->start();
+    if (watcher) {
+        QFuture< QList<StatEvent> > mahOldBoi = (QFuture< QList<StatEvent> >) watcher->future();
+        mahOldBoi.cancel();
+        delete watcher;
+        watcher = 0;
+    }
+    startRefreshAnim();
+    DataProvider* dataSource = new DataProvider;
+    watcher = new QFutureWatcher< QList<StatEvent> >;
+    connect(watcher, SIGNAL(finished()), this, SLOT(onDataLoaded()));
+    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, *dataSource, msisdn, dateTime);
+    watcher->setFuture(mahBoi);
 }
 
-void MainWindow::stopRefreshAnim()
-{
-    ui->refreshIcon->stop();
-}
-
-void MainWindow::onDataLoaded()
-{
+void MainWindow::onDataLoaded() {
     stopRefreshAnim();
     QList<StatEvent> events = watcher->future().result();
 
@@ -94,7 +106,21 @@ void MainWindow::onDataLoaded()
     }
 }
 
-void MainWindow::on_exitButton_clicked()
-{
+void MainWindow::on_buttonFilter_clicked() {
+    loadStatsByMsisdnAndDate(MSISDN(QString("79218711725")), QDateTime(QDate(2013, 7, 5), QTime(22, 59)));
+}
+
+void MainWindow::on_exitButton_clicked() {
     this->close();
+}
+
+//refresh anim
+void MainWindow::startRefreshAnim()
+{
+    ui->refreshIcon->start();
+}
+
+void MainWindow::stopRefreshAnim()
+{
+    ui->refreshIcon->stop();
 }

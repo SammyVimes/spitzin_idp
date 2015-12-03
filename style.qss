@@ -8,6 +8,27 @@ ClickableLabel:hover {
     color: white;
 }
 
+#dateFilter {
+
+}
+
+#buttonFilter:pressed {
+    background-color: #007051;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+#buttonFilter:hover {
+    background-color: #00A25f;
+}
+
+#buttonFilter {
+    background-color: #00985f;
+    border: none;
+    color: white;
+    font-size: 18px;
+}
+
 ClickableLabel {
     font-size: 20px;
     background-color: #F2F2F2;
@@ -42,16 +63,16 @@ StatEventItemWidget QLabel {
     background-color: #F43C31;
 }
 
-RotationLabel * {
-    border: none;
-    border-top: 1px solid #D4D4D4;
-}
-
 #exitButton {
     background-color: #E43C31;
     border: none;
     color: white;
     font-size: 18px;
+}
+
+RotationLabel * {
+    border: none;
+    border-top: 1px solid #D4D4D4;
 }
 
 StatEventItemWidget {

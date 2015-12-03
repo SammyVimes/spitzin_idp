@@ -7,8 +7,10 @@
 #include <QtConcurrent/QtConcurrent>
 #include <QFuture>
 #include <QFutureWatcher>
+#include <QDateTime>
 #include "dataprovider.h"
 #include "stateventitemwidget.h"
+#include "msisdn.h"
 
 namespace Ui {
 class MainWindow;
@@ -35,11 +37,14 @@ private slots:
 
     void on_exitButton_clicked();
 
+    void on_buttonFilter_clicked();
+
 private:
     QFutureWatcher< QList<StatEvent> >* watcher;
     QPropertyAnimation *refreshAnimation;
 
     void loadStats(QString msisdn);
+    void loadStatsByMsisdnAndDate(MSISDN msisdn, QDateTime dateTime);
     void startRefreshAnim();
     void stopRefreshAnim();
     QPoint clickPos;
