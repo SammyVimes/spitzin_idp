@@ -1,0 +1,47 @@
+QDialog#AuthDialog {
+    background-color: white;
+    border: 1px solid #D4D4D4;
+}
+
+
+QLineEdit {
+    border: 1px solid #E9EBED;
+}
+
+QLineEdit:focus {
+    border: 1px solid #00985f;
+}
+
+#authButton:pressed {
+    background-color: #007051;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+#authButton:hover {
+    background-color: #00A25f;
+}
+
+#authButton {
+    background-color: #00985f;
+    border: none;
+    color: white;
+    font-size: 16px;
+}
+
+#exitButton:pressed {
+    background-color: #F93C31;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+#exitButton:hover {
+    background-color: #F43C31;
+}
+
+#exitButton {
+    background-color: #E43C31;
+    border: none;
+    color: white;
+    font-size: 18px;
+}

@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     clickablelabel.cpp \
     stateventitemwidget.cpp \
     dataprovider.cpp \
-    msisdn.cpp
+    msisdn.cpp \
+    authdialog.cpp
 
 HEADERS  += mainwindow.h \
     clickablelabel.h \
@@ -25,10 +26,12 @@ HEADERS  += mainwindow.h \
     statevent.h \
     rotationlabel.h \
     msisdn.h \
-    coreutils.h
+    coreutils.h \
+    authdialog.h
 
 FORMS    += mainwindow.ui \
-    stateventitemwidget.ui
+    stateventitemwidget.ui \
+    authdialog.ui
 
 OTHER_FILES += \
     ChartForm.ui.qml
@@ -41,7 +44,8 @@ DISTFILES += \
     QChart.js \
     QChartGallery.js \
     style.qss \
-    BarChart.qml
+    BarChart.qml \
+    dialog.qss
 
 RESOURCES += \
     stylesheet.qrc
