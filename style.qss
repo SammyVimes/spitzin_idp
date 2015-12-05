@@ -76,7 +76,7 @@ StatEventItemWidget QLabel {
 
 RotationLabel * {
     border: none;
-    border-top: 1px solid #D4D4D4;
+    border-top: 2px solid #D4D4D4;
 }
 
 StatEventItemWidget {
@@ -90,7 +90,7 @@ StatEventItemWidget {
 
 QWidget#centralWidget {
     background-color: white;
-    border: 1px solid #D4D4D4;
+    border: 2px solid #D4D4D4;
 }
 
 

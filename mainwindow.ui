@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -113,10 +113,25 @@
        <x>0</x>
        <y>0</y>
        <width>562</width>
-       <height>678</height>
+       <height>984</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="Map" name="map">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>270</height>
+         </size>
+        </property>
+        <property name="url">
+         <url>
+          <string>qrc:/html/index.html</string>
+         </url>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLabel" name="label">
         <property name="styleSheet">
@@ -178,6 +193,7 @@
      <zorder>quickWidget_4</zorder>
      <zorder>label</zorder>
      <zorder>label_2</zorder>
+     <zorder>map</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="exitButton">
@@ -213,7 +229,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Filter</string>
+     <string>Фильтр</string>
     </property>
    </widget>
    <widget class="QDateTimeEdit" name="dateFilter">
@@ -263,6 +279,11 @@
    <header>QtQuickWidgets/QQuickWidget</header>
   </customwidget>
   <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+  <customwidget>
    <class>ClickableLabel</class>
    <extends>QLabel</extends>
    <header>clickablelabel.h</header>
@@ -274,6 +295,12 @@
    <class>RotationLabel</class>
    <extends>QWidget</extends>
    <header>rotationlabel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Map</class>
+   <extends>QWebView</extends>
+   <header>map.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

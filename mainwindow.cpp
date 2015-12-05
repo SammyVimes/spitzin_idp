@@ -37,6 +37,7 @@ void MainWindow::on_child1Btn_clicked()
 {
     this->ui->child1Btn->setActive(true);
     this->ui->child2Btn->setActive(false);
+    this->ui->map->selectMarker(0);
     loadStats("+79218711725");
 }
 
@@ -44,6 +45,7 @@ void MainWindow::on_child2Btn_clicked()
 {
     this->ui->child2Btn->setActive(true);
     this->ui->child1Btn->setActive(false);
+    this->ui->map->selectMarker(1);
     loadStats("+79215988738");
 }
 

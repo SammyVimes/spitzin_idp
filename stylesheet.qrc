@@ -13,4 +13,7 @@
         <file>QChart.qml</file>
         <file>QChartGallery.js</file>
     </qresource>
+    <qresource prefix="/html">
+        <file>index.html</file>
+    </qresource>
 </RCC>

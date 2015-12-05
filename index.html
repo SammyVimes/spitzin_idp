@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+   <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+      <title>Google Maps JavaScript API Example: Simple Map</title>
+      <!--
+         Загрузка API Карт Google.
+           V - номер используемой версии API карт Google. В данном случае используем вторую версию.
+               Можно выбрать версии 2.х или 2.s. 2.х - последняя версия, включающая все новейшие функции,
+               однако, может быть нестабильной. Функции версии 2.х переносятся в версию v=2, если не были
+               обнаружены ошибки. Версия 2.s - стабильная версия. Обновляется редко, раз в 2-3 месяца,
+               и может отстовать по функционалу.
+           hl - язык домена.
+           KEY - ключ API карт. Нужно подставить собственный ключ.
+         -->
+      <script src="http://maps.google.com/maps?file=api&v=2&amp&key=ABQIAAAAO49nNEVnwxGsuIBDsUs1sBRMlhDm1om-sbK3hx0z3hRQyGwd6hSC3qtdFB_5tj9DICmkSlnZqX5hrw&hl=ru"
+         type="text/javascript"></script>
+      <script type="text/javascript">
+         var map;
+
+         /*
+          В процессе обработки HTML-страницы строится объектная модель документа (DOM),
+          а все внешние изображения и сценарии встраиваются в объект document.
+          Чтобы карта появлялась на странице лишь после полной загрузки последней,
+          необходимо выполнить функцию, которая формирует объект GMap2,
+          как только элемент <body> получит сообщение onload.
+          Таким образом можно избежать непредсказуемого поведения и улучшить контроль над построением карты.
+         */
+         //JavaScript-функция для создания объекта "карта".
+         function initialize() {
+           if (GBrowserIsCompatible()) {
+             /*
+         Создаём новый экземпляр "карты".
+              Указываем DOM-узел на странице в качестве контейнера для "карты".
+         */
+             map = new GMap2(document.getElementById("map"));
+
+         /*
+              Устанавливает центр "карты", коэффициент масштаба и тип "карты".
+              Этот Метод должен быть вызван первым, сразу после создания "карты", для установки её состояния.
+              Вызов других операций после создания "карты" является ошибкой, пока не вызван этот метод.
+
+         Коэффициент масштаба может принимать значения от 0 (самый низкий коэффициент,
+              при котором на одном изображении представлена карта мира)
+              до 19 (максимальный коэффициент — вплоть до отображения отдельных зданий).
+
+              Cписок типов карт, которые поддерживаются в настоящее время:
+                G_NORMAL_MAP    — обычная двумерная карта. Используется по умолчанию.
+                G_SATELLITE_MAP — фотографическая карта.
+                G_HYBRID_MAP    — комбинация фотографий и слоя обычной карты с наиболее важными объектами (дорогами, названиями городов).
+                G_PHYSICAL_MAP  — физическая карта с информацией о рельефе местности.
+             */
+         map.setCenter(new GLatLng(59.972271, 30.323396), 13);
+
+             //Добавляет поведение и элементы управления по умолчанию.
+             //map.setUIToDefault();
+
+             map.enableScrollWheelZoom();
+             map.addControl(new GLargeMapControl3D());
+             map.addControl(new GMapTypeControl());
+
+             //Запрещает изменять масштаб по двойному нажатию кнопки мыши.
+             map.disableDoubleClickZoom();
+
+             //Создаём три точки с географическими координатами (широта и долгота).
+             var point  = new GLatLng(59.972271, 30.323396);
+             var point1 = new GLatLng(59.946522, 30.498118);
+             var point2 = new GLatLng(51.5714, 45.9719);
+
+         /*
+              Создаём три маркера, которые отмечают некоторое положение на "карте".
+              Маркер имеет параметр latlng, который указывает на географическое положение места,
+              где маркер расположен на "карте", и значок icon. В случае если icon не установлен в конструкторе,
+              используется значок по умолчанию — G_DEFAULT_ICON.
+         */
+             var marker  = new GMarker(point, {icon: 'http://maps.gstatic.com/mapfiles/markers2/marker.png'});
+             var marker1 = new GMarker(point1, {icon: 'http://maps.gstatic.com/mapfiles/markers2/marker.png'});
+             var marker2 = new GMarker(point2, {icon: 'http://maps.gstatic.com/mapfiles/markers2/marker.png'});
+
+             //Добавляем наши маркеры на "карту" в виде наложенной графики.
+             map.addOverlay(marker);
+             map.addOverlay(marker1);
+             map.addOverlay(marker2);
+
+         /*
+              При взаимодействии пользователя с браузером с помощью мыши и клавиатуры создаются события,
+              распространяющиеся в DOM. Программы, ожидающие определенные события JavaScript,
+              регистрируют для них приемники событий и при получении таких событий выполняют тот или иной код.
+              API Карт Google дополняет эту модель собственными событиями объектов Карт.
+         */
+         /*
+              Регистрируем обработчики событий "click" наших маркеров.
+              Для подписки на уведомления об этих событиях служит статический метод GEvent.addListener().
+              Методу передаются объект, принимаемое событие и вызываемая при наступлении указанного события функция.
+         */
+             GEvent.addListener(marker, "click", function() {
+               //
+               mainWindow.debugMessage("Вы нажали на первый маркер.");
+             });
+
+             GEvent.addListener(marker1, "click", function() {
+               mainWindow.debugMessage("Вы нажали на второй маркер.");
+             });
+
+             GEvent.addListener(marker2, "click", function() {
+               mainWindow.debugMessage("Вы нажали на третий маркер.");
+             });
+           }
+         }
+      </script>
+   </head>
+   <body onload="initialize()" onunload="GUnload()">
+      <!-- Регистрируем место на веб-странице, для отображения "карты". -->
+      <div id="map" style="width: 535px; height: 250px;"></div>
+   </body>
+</html>

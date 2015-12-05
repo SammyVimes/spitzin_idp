@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets designer quickwidgets qml quick
+QT       += core gui widgets designer quickwidgets qml quick webkitwidgets webkit
 
 TARGET = pcmdp
 TEMPLATE = app
@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     stateventitemwidget.cpp \
     dataprovider.cpp \
     msisdn.cpp \
-    authdialog.cpp
+    authdialog.cpp \
+    map.cpp
 
 HEADERS  += mainwindow.h \
     clickablelabel.h \
@@ -27,7 +28,8 @@ HEADERS  += mainwindow.h \
     rotationlabel.h \
     msisdn.h \
     coreutils.h \
-    authdialog.h
+    authdialog.h \
+    map.h
 
 FORMS    += mainwindow.ui \
     stateventitemwidget.ui \
@@ -45,7 +47,8 @@ DISTFILES += \
     QChartGallery.js \
     style.qss \
     BarChart.qml \
-    dialog.qss
+    dialog.qss \
+    index.html
 
 RESOURCES += \
     stylesheet.qrc
