@@ -107,7 +107,8 @@ void MainWindow::onDataLoaded() {
 }
 
 void MainWindow::on_buttonFilter_clicked() {
-    loadStatsByMsisdnAndDate(MSISDN(QString("79218711725")), QDateTime(QDate(2013, 7, 5), QTime(22, 59)));
+    QDateTime dTime = ui->dateFilter->dateTime();
+    loadStatsByMsisdnAndDate(MSISDN(QString("79218711725")), dTime);
 }
 
 void MainWindow::on_exitButton_clicked() {

@@ -9,7 +9,11 @@ ClickableLabel:hover {
 }
 
 #dateFilter {
+    border: 1px solid #E9EBED;
+}
 
+#dateFilter:focus {
+    border: 1px solid #00985f;
 }
 
 #buttonFilter:pressed {
@@ -26,7 +30,7 @@ ClickableLabel:hover {
     background-color: #00985f;
     border: none;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 ClickableLabel {
