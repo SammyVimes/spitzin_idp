@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->refreshIcon->setPath(QString::fromUtf8(":/img/icon_refresh.png"));
+    dataProvider = new DataProvider;
     setWindowTitle("ParentalCare");
 }
 
@@ -28,6 +29,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::showEvent(QShowEvent *e)
 {
+    dataProvider->init();
     this->ui->child1Btn->setActive(true);
     this->ui->child2Btn->setActive(false);
     loadStats("+79218711725");
@@ -50,12 +52,12 @@ void MainWindow::on_child2Btn_clicked()
 }
 
 //вместо extern сделаем просто функцию тут
-QList<StatEvent> getData(DataProvider& provider, QString msisdn) {
-    return provider.getEventsForMsisdn(msisdn);
+QList<StatEvent> getData(DataProvider* provider, QString msisdn) {
+    return provider->getEventsForMsisdn(msisdn);
 }
 
-QList<StatEvent> getData(DataProvider& provider, MSISDN msisdn, QDateTime dateTime) {
-    return provider.selectByDateAndMsisdn(msisdn, dateTime);
+QList<StatEvent> getData(DataProvider* provider, MSISDN msisdn, QDateTime dateTime) {
+    return provider->selectByDateAndMsisdn(msisdn, dateTime);
 }
 
 void MainWindow::loadStats(QString msisdn)
@@ -67,10 +69,9 @@ void MainWindow::loadStats(QString msisdn)
         watcher = 0;
     }
     startRefreshAnim();
-    DataProvider* dataSource = new DataProvider;
     watcher = new QFutureWatcher< QList<StatEvent> >;
     connect(watcher, SIGNAL(finished()), this, SLOT(onDataLoaded()));
-    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, *dataSource, msisdn);
+    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, dataProvider, msisdn);
     watcher->setFuture(mahBoi);
 }
 
@@ -84,10 +85,9 @@ void MainWindow::loadStatsByMsisdnAndDate(MSISDN msisdn, QDateTime dateTime)
         watcher = 0;
     }
     startRefreshAnim();
-    DataProvider* dataSource = new DataProvider;
     watcher = new QFutureWatcher< QList<StatEvent> >;
     connect(watcher, SIGNAL(finished()), this, SLOT(onDataLoaded()));
-    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, *dataSource, msisdn, dateTime);
+    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, dataProvider, msisdn, dateTime);
     watcher->setFuture(mahBoi);
 }
 

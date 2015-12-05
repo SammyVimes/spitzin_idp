@@ -3,13 +3,15 @@
 
 #include <QDateTime>
 #include <QString>
+#include <msisdn.h>
 
 class StatEvent {
 
 public:
-    StatEvent(QString eventText, QDateTime date) {
+    StatEvent(MSISDN msisdn, QString eventText, QDateTime date) {
         this->eventText = eventText;
         this->date = date;
+        this->msisdn = msisdn;
     }
 
     QString getEventText() {
@@ -20,10 +22,14 @@ public:
         return date;
     }
 
+    MSISDN getMsisdn() {
+        return msisdn;
+    }
+
 private:
     QString eventText;
     QDateTime date;
-
+    MSISDN msisdn;
 };
 
 #endif // STATEVENT

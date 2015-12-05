@@ -48,6 +48,7 @@ private:
     void startRefreshAnim();
     void stopRefreshAnim();
     QPoint clickPos;
+    DataProvider* dataProvider;
     Ui::MainWindow *ui;
 };
 

@@ -1,6 +1,7 @@
 #ifndef DATAPROVIDER_H
 #define DATAPROVIDER_H
 
+#include <QtSql>
 #include <statevent.h>
 #include <msisdn.h>
 #include <coreutils.h>
@@ -12,6 +13,9 @@ public:
     DataProvider();
     QList<StatEvent> getEventsForMsisdn(QString msisdn);
     QList<StatEvent> selectByDateAndMsisdn(MSISDN msisdn, QDateTime dateTime);
+    void init();
+private:
+    QSqlDatabase dataBase;
 };
 
 #endif // DATAPROVIDER_H
