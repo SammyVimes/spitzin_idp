@@ -8,6 +8,7 @@
 #include <QFuture>
 #include <QFutureWatcher>
 #include <QDateTime>
+#include <QQuickItem>
 #include "dataprovider.h"
 #include "stateventitemwidget.h"
 #include "msisdn.h"

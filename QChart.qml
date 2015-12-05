@@ -24,6 +24,7 @@ Canvas {
 
   property   var chart;
   property   var chartData;
+  property   var dataGen;
   property   int chartType: 0;
   property  bool chartAnimated: true;
   property alias chartAnimationEasing: chartAnimator.easing.type;
@@ -93,6 +94,11 @@ Canvas {
   function repaint() {
       chartAnimationProgress = 0;
       chartAnimator.start();
+  }
+
+  function reloadData() {
+      chartData = dataGen();
+      repaint();
   }
 
 // /////////////////////////////////////////////////////////////////

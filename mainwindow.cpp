@@ -92,6 +92,11 @@ void MainWindow::loadStatsByMsisdnAndDate(MSISDN msisdn, QDateTime dateTime)
 }
 
 void MainWindow::onDataLoaded() {
+    QQuickItem* obj = this->ui->quickWidget->rootObject();
+    QVariant returnedValue;
+    QMetaObject::invokeMethod(obj, "reloadData", Q_RETURN_ARG(QVariant, returnedValue));
+    obj = this->ui->quickWidget_4->rootObject();
+    QMetaObject::invokeMethod(obj, "reloadData", Q_RETURN_ARG(QVariant, returnedValue));
     stopRefreshAnim();
     QList<StatEvent> events = watcher->future().result();
 
