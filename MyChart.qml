@@ -12,5 +12,6 @@ QChart {
       chartAnimationEasing: Easing.OutElastic;
       chartAnimationDuration: 2000;
       chartData: ChartsData.ChartLineData;
+      dataGen: ChartsData.LineGen;
       chartType: Charts.ChartType.LINE;
 }

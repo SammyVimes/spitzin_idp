@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets designer quickwidgets qml quick webkitwidgets webkit
+QT       += core gui widgets designer quickwidgets qml quick webkitwidgets webkit sql
 
 TARGET = pcmdp
 TEMPLATE = app

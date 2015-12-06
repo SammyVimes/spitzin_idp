@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->refreshIcon->setPath(QString::fromUtf8(":/img/icon_refresh.png"));
+    dataProvider = new DataProvider;
     setWindowTitle("ParentalCare");
 }
 
@@ -28,9 +29,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::showEvent(QShowEvent *e)
 {
+    dataProvider->init();
     this->ui->child1Btn->setActive(true);
     this->ui->child2Btn->setActive(false);
-    loadStats("+79218711725");
+    curMsisdn = QString("+79218711725");
+    loadStats(curMsisdn);
 }
 
 void MainWindow::on_child1Btn_clicked()
@@ -38,7 +41,8 @@ void MainWindow::on_child1Btn_clicked()
     this->ui->child1Btn->setActive(true);
     this->ui->child2Btn->setActive(false);
     this->ui->map->selectMarker(0);
-    loadStats("+79218711725");
+    curMsisdn = QString("+79218711725");
+    loadStats(curMsisdn);
 }
 
 void MainWindow::on_child2Btn_clicked()
@@ -46,19 +50,20 @@ void MainWindow::on_child2Btn_clicked()
     this->ui->child2Btn->setActive(true);
     this->ui->child1Btn->setActive(false);
     this->ui->map->selectMarker(1);
-    loadStats("+79215988738");
+    curMsisdn = QString("+79215988738");
+    loadStats(curMsisdn);
 }
 
 //вместо extern сделаем просто функцию тут
-QList<StatEvent> getData(DataProvider& provider, QString msisdn) {
-    return provider.getEventsForMsisdn(msisdn);
+QList<StatEvent> getData(DataProvider* provider, MSISDN msisdn) {
+    return provider->getEventsForMsisdn(msisdn);
 }
 
-QList<StatEvent> getData(DataProvider& provider, MSISDN msisdn, QDateTime dateTime) {
-    return provider.selectByDateAndMsisdn(msisdn, dateTime);
+QList<StatEvent> getData(DataProvider* provider, MSISDN msisdn, QDateTime dateTime) {
+    return provider->selectByDateAndMsisdn(msisdn, dateTime);
 }
 
-void MainWindow::loadStats(QString msisdn)
+void MainWindow::loadStats(MSISDN msisdn)
 {
     if (watcher) {
         QFuture< QList<StatEvent> > mahOldBoi = (QFuture< QList<StatEvent> >) watcher->future();
@@ -67,10 +72,9 @@ void MainWindow::loadStats(QString msisdn)
         watcher = 0;
     }
     startRefreshAnim();
-    DataProvider* dataSource = new DataProvider;
     watcher = new QFutureWatcher< QList<StatEvent> >;
     connect(watcher, SIGNAL(finished()), this, SLOT(onDataLoaded()));
-    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, *dataSource, msisdn);
+    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, dataProvider, msisdn);
     watcher->setFuture(mahBoi);
 }
 
@@ -84,14 +88,18 @@ void MainWindow::loadStatsByMsisdnAndDate(MSISDN msisdn, QDateTime dateTime)
         watcher = 0;
     }
     startRefreshAnim();
-    DataProvider* dataSource = new DataProvider;
     watcher = new QFutureWatcher< QList<StatEvent> >;
     connect(watcher, SIGNAL(finished()), this, SLOT(onDataLoaded()));
-    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, *dataSource, msisdn, dateTime);
+    QFuture< QList<StatEvent> > mahBoi = QtConcurrent::run(getData, dataProvider, msisdn, dateTime);
     watcher->setFuture(mahBoi);
 }
 
 void MainWindow::onDataLoaded() {
+    QQuickItem* obj = this->ui->quickWidget->rootObject();
+    QVariant returnedValue;
+    QMetaObject::invokeMethod(obj, "reloadData", Q_RETURN_ARG(QVariant, returnedValue));
+    obj = this->ui->quickWidget_4->rootObject();
+    QMetaObject::invokeMethod(obj, "reloadData", Q_RETURN_ARG(QVariant, returnedValue));
     stopRefreshAnim();
     QList<StatEvent> events = watcher->future().result();
 
@@ -110,7 +118,7 @@ void MainWindow::onDataLoaded() {
 
 void MainWindow::on_buttonFilter_clicked() {
     QDateTime dTime = ui->dateFilter->dateTime();
-    loadStatsByMsisdnAndDate(MSISDN(QString("79218711725")), dTime);
+    loadStatsByMsisdnAndDate(curMsisdn, dTime);
 }
 
 void MainWindow::on_exitButton_clicked() {

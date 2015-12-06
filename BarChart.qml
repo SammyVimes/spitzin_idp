@@ -12,6 +12,7 @@ QChart {
       chartAnimationEasing: Easing.OutBounce;
       chartAnimationDuration: 2000;
       chartData: ChartsData.ChartBarData;
+      dataGen: ChartsData.BarGen;
       chartType: Charts.ChartType.BAR;
 }
 

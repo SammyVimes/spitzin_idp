@@ -153,3 +153,49 @@ var ChartBarData = {
                data: [28,48,40,19,96,27,100]
     }]
 }
+
+function rand(max) {
+    return Math.random() * (max - 0) + 0;
+}
+
+function rand100() {
+    return rand(100);
+}
+
+function rand20() {
+    return rand(20);
+}
+
+var BarGen = function() {
+    return {
+          labels: ["AngyBirds","Вконтакте","MS Word","Steam","Origin","Zanzara","TotalCommander"],
+          datasets: [{
+              fillColor: "rgba(220,220,220,0.5)",
+            strokeColor: "rgba(220,220,220,1)",
+                   data: [rand100(), rand100(), rand100(), rand100(), rand100(), rand100(), rand100()]
+        }, {
+              fillColor: "rgba(151,187,205,0.5)",
+            strokeColor: "rgba(151,187,205,1)",
+                   data: [rand100(),rand100(),rand100(),rand100(),rand100(),rand100(),rand100()]
+        }]
+    };
+}
+
+var LineGen = function() {
+    return {
+        labels: ["Понедельник","Вторник","Среда","Четверг","Пятница","СУббота","Воскресенье"],
+      datasets: [{
+                 fillColor: "rgba(220,120,120,0.5)",
+               strokeColor: "rgba(220,120,120,1)",
+                pointColor: "rgba(220,120,120,1)",
+          pointStrokeColor: "#ffffff",
+                      data: [rand20(), rand20(), rand20(), rand20(), rand20(), rand20(), rand20()]
+      }, {
+                 fillColor: "rgba(151,230,180,0.5)",
+               strokeColor: "rgba(151,230,180,1)",
+                pointColor: "rgba(151,230,180,1)",
+          pointStrokeColor: "#ffffff",
+                      data: [rand20(), rand20(), rand20(), rand20(), rand20(), rand20(), rand20()]
+      }]
+  };
+}

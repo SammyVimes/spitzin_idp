@@ -8,6 +8,8 @@ class MSISDN
 {
 public:
     MSISDN(QString msisdn);
+    MSISDN();
+    QString getMsisdn();
 private:
     QString msisdn;
 };
