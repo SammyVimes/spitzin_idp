@@ -69,7 +69,7 @@ void _insertLst(QSqlDatabase db, QList<StatEvent> data) {
     }
 }
 
-QList<StatEvent> DataProvider::getEventsForMsisdn(QString msisdn)
+QList<StatEvent> DataProvider::getEventsForMsisdn(MSISDN msisdn)
 {
     QList<StatEvent> _tmp = dbSelect(dataBase, msisdn, QDateTime::currentDateTime());
     if (_tmp.size() > 0) {

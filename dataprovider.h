@@ -11,7 +11,7 @@ class DataProvider
 {
 public:
     DataProvider();
-    QList<StatEvent> getEventsForMsisdn(QString msisdn);
+    QList<StatEvent> getEventsForMsisdn(MSISDN msisdn);
     QList<StatEvent> selectByDateAndMsisdn(MSISDN msisdn, QDateTime dateTime);
     void init();
 private:

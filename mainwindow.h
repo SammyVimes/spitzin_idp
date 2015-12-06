@@ -44,11 +44,12 @@ private:
     QFutureWatcher< QList<StatEvent> >* watcher;
     QPropertyAnimation *refreshAnimation;
 
-    void loadStats(QString msisdn);
+    void loadStats(MSISDN msisdn);
     void loadStatsByMsisdnAndDate(MSISDN msisdn, QDateTime dateTime);
     void startRefreshAnim();
     void stopRefreshAnim();
     QPoint clickPos;
+    MSISDN curMsisdn;
     DataProvider* dataProvider;
     Ui::MainWindow *ui;
 };
