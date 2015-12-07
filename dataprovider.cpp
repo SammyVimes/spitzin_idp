@@ -49,8 +49,9 @@ QList<StatEvent> dbSelect(QSqlDatabase db, MSISDN msisdn, QDateTime dateTime) {
     return lst;
 }
 
-void _insertVal(QSqlDatabase db, StatEvent e) {
-    QSqlQuery q(db);
+void DataProvider::insertVal(StatEvent e)
+{
+    QSqlQuery q(dataBase);
     q.prepare("INSERT INTO events (msisdn, event_date, event_text)"
               " VALUES(:msisdn, :event_date, :event_text)");
     q.bindValue(":msisdn", e.getMsisdn().getMsisdn());
@@ -63,9 +64,10 @@ void _insertVal(QSqlDatabase db, StatEvent e) {
     }
 }
 
-void _insertLst(QSqlDatabase db, QList<StatEvent> data) {
-    foreach (StatEvent event, data) {
-        _insertVal(db, event);
+void DataProvider::insertList(QList<StatEvent> list)
+{
+    foreach (StatEvent event, list) {
+        insertVal(event);
     }
 }
 
@@ -111,7 +113,7 @@ QList<StatEvent> DataProvider::getEventsForMsisdn(MSISDN msisdn)
         StatEvent e(msisdn, msg, QDateTime::currentDateTime());
         lst.append(e);
     }
-    _insertLst(dataBase, lst);
+    insertList(lst);
     //sleep(1000 + random(1000, 3000));
     return lst;
 }
@@ -159,15 +161,15 @@ QList<StatEvent> DataProvider::selectByDateAndMsisdn(MSISDN msisdn, QDateTime da
         StatEvent e(msisdn, msg, QDateTime(dateTime.date(), QTime(hour, minute)));
         lst.append(e);
     }
-    _insertLst(dataBase, lst);
+    insertList(lst);
     //sleep(1000 + random(1000, 3000));
     return lst;
 }
 
-void DataProvider::init()
+void DataProvider::init(QString dbName)
 {
     dataBase = QSqlDatabase::addDatabase("QSQLITE");
-    dataBase.setDatabaseName("db_name.sqlite");
+    dataBase.setDatabaseName(dbName);
     if (!dataBase.open()) {
         throw 0;
     }
@@ -184,4 +186,16 @@ void DataProvider::init()
             throw 1;
         }
     }
+}
+
+QString DataProvider::close(QString dbName)
+{
+   QString cN = dataBase.connectionName();
+   dataBase.close();
+   return cN;
+}
+
+QSqlDatabase DataProvider::_getDatabase()
+{
+    return dataBase;
 }

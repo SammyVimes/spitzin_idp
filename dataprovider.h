@@ -13,9 +13,14 @@ public:
     DataProvider();
     QList<StatEvent> getEventsForMsisdn(MSISDN msisdn);
     QList<StatEvent> selectByDateAndMsisdn(MSISDN msisdn, QDateTime dateTime);
-    void init();
+    void insertList(QList<StatEvent> list);
+    void insertVal(StatEvent e);
+    void init(QString dbName="db_name.sqlite");
+    QString close(QString dbName="db_name.sqlite");
+    QSqlDatabase _getDatabase();
 private:
     QSqlDatabase dataBase;
+    QString dbName;
 };
 
 #endif // DATAPROVIDER_H
