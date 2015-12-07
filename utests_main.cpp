@@ -13,6 +13,7 @@ private slots:
     void testDbCreate();
     void testDbInsert();
     void testDbSelect();
+    void testRandom();
 };
 
 void UTests::initTestCase()
@@ -102,6 +103,11 @@ void UTests::testDbSelect()
     QString connectionName = dataProvider->close();
     delete dataProvider;
     QSqlDatabase::removeDatabase(connectionName);
+}
+
+void UTests::testRandom()
+{
+    QVERIFY(random(0, 1000) != random(0, 1000));
 }
 
 QTEST_MAIN(UTests)
