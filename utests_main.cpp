@@ -16,16 +16,25 @@ private slots:
     void testRandom();
 };
 
+
+//инициализация "среды" тестирования
 void UTests::initTestCase()
 {
     QFile("test_db.sqlite").remove();
 }
 
+
+//удаляем всё, созданное во время тестирования
 void UTests::cleanupTestCase()
 {
     QFile("test_db.sqlite").remove();
 }
 
+
+/**
+ * Тест соединения с SQLite базой данных
+ * @brief UTests::testDbOpen
+ */
 void UTests::testDbOpen()
 {
     DataProvider* dataProvider = new DataProvider();
@@ -41,6 +50,10 @@ void UTests::testDbOpen()
     QSqlDatabase::removeDatabase(connectionName);
 }
 
+/**
+ * Тест закрытия соединения
+ * @brief UTests::testDbClose
+ */\
 void UTests::testDbClose()
 {
     DataProvider* dataProvider = new DataProvider();
@@ -53,6 +66,10 @@ void UTests::testDbClose()
     QCOMPARE(contains, false);
 }
 
+/**
+ * Тест создания таблицы "events" в базе данных
+ * @brief UTests::testDbCreate
+ */
 void UTests::testDbCreate()
 {
     DataProvider* dataProvider = new DataProvider();
@@ -71,6 +88,10 @@ void UTests::testDbCreate()
     QSqlDatabase::removeDatabase(connectionName);
 }
 
+/**
+ * Тест вставки события в таблицу events
+ * @brief UTests::testDbInsert
+ */\
 void UTests::testDbInsert()
 {
     DataProvider* dataProvider = new DataProvider();
@@ -87,8 +108,14 @@ void UTests::testDbInsert()
     QSqlDatabase::removeDatabase(connectionName);
 }
 
+
+/**
+ * Тест выборки из базы данных
+ * @brief UTests::testDbSelect
+ */
 void UTests::testDbSelect()
 {
+    QFile("test_db.sqlite").remove();
     DataProvider* dataProvider = new DataProvider();
     dataProvider->init("test_db.sqlite");
     MSISDN msisdn("+79215988738");
@@ -105,6 +132,10 @@ void UTests::testDbSelect()
     QSqlDatabase::removeDatabase(connectionName);
 }
 
+/**
+ * Тест рандома
+ * @brief UTests::testRandom
+ */
 void UTests::testRandom()
 {
     QVERIFY(random(0, 1000) != random(0, 1000));
