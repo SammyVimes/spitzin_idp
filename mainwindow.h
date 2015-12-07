@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "factory.h"
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QCheckBox>
@@ -24,7 +25,7 @@ protected:
     void mousePressEvent( QMouseEvent *);
     void mouseMoveEvent( QMouseEvent *);
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0, Factory<AbstractDataProvider*>* dataProviderFactory = 0);
     ~MainWindow();
 
 private slots:
@@ -50,7 +51,8 @@ private:
     void stopRefreshAnim();
     QPoint clickPos;
     MSISDN curMsisdn;
-    DataProvider* dataProvider;
+    AbstractDataProvider* dataProvider;
+    Factory<AbstractDataProvider*>* dataProviderFactory;
     Ui::MainWindow *ui;
 };
 

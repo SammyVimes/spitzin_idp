@@ -11,11 +11,12 @@ void AuthDialog::mouseMoveEvent(QMouseEvent* e)
     move( e->globalPos() - clickPos );
 }
 
-AuthDialog::AuthDialog(QWidget *parent) :
+AuthDialog::AuthDialog(QWidget *parent, Factory<AbstractDataProvider *>* dataProviderFactory) :
     QDialog(parent),
     ui(new Ui::AuthDialog)
 {
     ui->setupUi(this);
+    this->dataProviderFactory = dataProviderFactory;
 }
 
 AuthDialog::~AuthDialog()
@@ -30,7 +31,7 @@ void AuthDialog::on_exitButton_clicked()
 
 void AuthDialog::on_authButton_clicked()
 {
-        MainWindow* w = new MainWindow;
+        MainWindow* w = new MainWindow(0, dataProviderFactory);
 
 
         QFile file(":/qss/style.qss");

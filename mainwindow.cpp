@@ -11,20 +11,23 @@ void MainWindow::mouseMoveEvent(QMouseEvent* e)
     move( e->globalPos() - clickPos );
 }
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent, Factory<AbstractDataProvider *>* dataProviderFactory) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     watcher(0)
 {
     ui->setupUi(this);
     ui->refreshIcon->setPath(QString::fromUtf8(":/img/icon_refresh.png"));
-    dataProvider = new DataProvider;
+    this->dataProviderFactory = dataProviderFactory;
+    dataProvider = dataProviderFactory->create();
     setWindowTitle("ParentalCare");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete dataProvider;
+    delete dataProviderFactory;
 }
 
 void MainWindow::showEvent(QShowEvent *e)
@@ -55,11 +58,11 @@ void MainWindow::on_child2Btn_clicked()
 }
 
 //вместо extern сделаем просто функцию тут
-QList<StatEvent> getData(DataProvider* provider, MSISDN msisdn) {
+QList<StatEvent> getData(AbstractDataProvider* provider, MSISDN msisdn) {
     return provider->getEventsForMsisdn(msisdn);
 }
 
-QList<StatEvent> getData(DataProvider* provider, MSISDN msisdn, QDateTime dateTime) {
+QList<StatEvent> getData(AbstractDataProvider* provider, MSISDN msisdn, QDateTime dateTime) {
     return provider->selectByDateAndMsisdn(msisdn, dateTime);
 }
 

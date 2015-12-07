@@ -1,6 +1,8 @@
 #ifndef AUTHDIALOG_H
 #define AUTHDIALOG_H
 
+#include "dataprovider.h"
+#include "factory.h"
 #include "mainwindow.h"
 #include <QDialog>
 #include <QMouseEvent>
@@ -19,7 +21,7 @@ protected:
     void mouseMoveEvent( QMouseEvent *);
 
 public:
-    explicit AuthDialog(QWidget *parent = 0);
+    explicit AuthDialog(QWidget *parent = 0, Factory<AbstractDataProvider*>* dataProviderFactory = 0);
     ~AuthDialog();
 
 private slots:
@@ -30,6 +32,7 @@ private slots:
 private:
     Ui::AuthDialog *ui;
     QPoint clickPos;
+    Factory<AbstractDataProvider*>* dataProviderFactory;
 };
 
 #endif // AUTHDIALOG_H

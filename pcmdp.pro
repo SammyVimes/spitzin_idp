@@ -29,7 +29,9 @@ HEADERS  += mainwindow.h \
     msisdn.h \
     coreutils.h \
     authdialog.h \
-    map.h
+    map.h \
+    abstractdataprovider.h \
+    factory.h
 
 FORMS    += mainwindow.ui \
     stateventitemwidget.ui \
